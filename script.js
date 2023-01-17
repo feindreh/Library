@@ -10,13 +10,25 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
+function displayLibrary() {
+  // loop through library and render the books
+  document.getElementById('book-shelf').innerHTML = '';
+  for (const book of myLibrary) {
+    const div = getDivFromBook(book);
+    document.getElementById('book-shelf').appendChild(div);
+  }
+}
+
 function addBook(title, author, pages, read) {
   // add a book to the library
+
   const book = new Book(title, author, pages, read);
   myLibrary.push(book);
+  displayLibrary();
 }
 
 function getDivFromBook(book) {
+  // getDivFromBook
   const div = document.createElement('div');
   div.style.cssText = 'color: black; background: grey;';
 
@@ -37,17 +49,22 @@ function getDivFromBook(book) {
   return div;
 }
 
-function displayLibrary() {
-  // loop through library and render the books
-  document.getElementById('book-shelf').innerHTML = '';
-  for (const book of myLibrary) {
-    const div = getDivFromBook(book);
-    document.getElementById('book-shelf').appendChild(div);
-  }
+function makeBookFromInputs() {
+  const title = document.getElementById('title').value;
+  const author = document.getElementById('author').value;
+  const pages = document.getElementById('pages').value;
+  const read = document.getElementById('read').checked;
+
+  addBook(title, author, pages, read);
 }
 
 const Launch = document.querySelector('#Launch');
 Launch.addEventListener('click', () => { displayLibrary(); });
+
+const newBookButton = document.querySelector('#Add');
+newBookButton.addEventListener('click', () => {
+  makeBookFromInputs();
+});
 
 addBook('harry', 'JRK', 185, 'true');
 addBook('Hobit', 'Tolkien', 385, 'true');

@@ -10,8 +10,16 @@
 </head>
 <body>
     <div id="main-container">
-        <button type="button" id="Launch">Launch more</button>
-        <div id="input">Inputs here pls</div>
+        <div id="buttons">
+            <button type="button" id="Launch">display Library</button>
+            <button type="button" id="Add">New Book?</button>
+        </div>
+        <div id="input">
+            <div><label for="title">Titel:</label><input id="title" name="title" type="text"></div>
+            <div><label for="author">Author:</label><input id="author" name="author"type="text"></div>
+            <div><label for="pages">Pages:</label><input id="pages" name="pages" type="text"></div>
+            <div><label for="read">Read?</label><input id="read" name="read" type="checkbox"> </div>           
+        </div>
         <div id="book-shelf"></div>
     </div>
 </body>

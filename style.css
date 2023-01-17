@@ -13,13 +13,23 @@ html,body>div{
 
 #main-container{
     display: grid;
-    grid-template: 1fr 2fr / 1fr 2fr
+    grid-template: 1fr 2fr 1f/ 1fr 2fr
 }
 #book-shelf{
     margin:40px;
-    grid-area: 2/1/3/3;
+    grid-area: 2/1/3/4;
     display:grid;
     grid-gap:20px;
     grid-template-columns: repeat(auto-fit,  minmax(150px, 200px));
     grid-template-rows: repeat(auto-fit,  minmax(150px, 200px));
+    background-color: rgba(141, 49, 49, 0.829);
+}
+#input{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+#input>div{
+    display: flex;
+    justify-content: space-between;
 }
