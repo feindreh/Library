@@ -21,7 +21,6 @@ function displayLibrary() {
   for (const book of myLibrary) {
     const div = document.createElement('div');
     for (const part in book) {
-      console.log(part);
       div.innerText += `${book[part]}`;
     }
     document.getElementById('book-shelf').appendChild(div);
