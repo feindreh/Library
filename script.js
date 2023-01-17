@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 /* eslint-disable guard-for-in */
 /* eslint-disable no-restricted-syntax */
 const myLibrary = [];
@@ -23,10 +24,14 @@ function displayLibrary() {
 
 function addBook(title, author, pages, read) {
   // add a book to the library
-  const id = myLibrary.length + 1;
+  let id = myLibrary.length + 1;
+  for (let i = 0; i < myLibrary.length; i++) {
+    if (myLibrary[i] === '') { id = i + 1; break; }
+  }
+
   const book = new Book(title, author, pages, read, id);
 
-  myLibrary.push(book);
+  myLibrary[id - 1] = book;
 
   displayLibrary();
 }
@@ -61,7 +66,6 @@ function getDivFromBook(book) {
 }
 
 function deleteBook(id) {
-  console.log(id);
   myLibrary.splice(id - 1, 1, '');
   displayLibrary();
 }
