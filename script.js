@@ -22,20 +22,6 @@ function displayLibrary() {
   }
 }
 
-function addBook(title, author, pages, read) {
-  // add a book to the library
-  let id = myLibrary.length + 1;
-  for (let i = 0; i < myLibrary.length; i++) {
-    if (myLibrary[i] === '') { id = i + 1; break; }
-  }
-
-  const book = new Book(title, author, pages, read, id);
-
-  myLibrary[id - 1] = book;
-
-  displayLibrary();
-}
-
 function getDivFromBook(book) {
   // getDivFromBook
   const div = document.createElement('div');
@@ -53,16 +39,37 @@ function getDivFromBook(book) {
   const pRead = document.createElement('p');
   pRead.innerText = `read: ${book.read}`;
 
+  const { id } = book;
+
   const deleteButton = document.createElement('button');
   deleteButton.className = 'deleteButton';
   deleteButton.innerHTML = 'delete Book';
   deleteButton.setAttribute('type', 'button');
-  const { id } = book;
   deleteButton.addEventListener('click', () => { deleteBook(id); });
 
-  div.append(pTitle, pAuthor, pPages, pRead, deleteButton);
+  const readButton = document.createElement('button');
+  readButton.className = 'readButton';
+  readButton.innerHTML = 'change read status';
+  readButton.setAttribute('type', 'button');
+  readButton.addEventListener('click', () => { changeRead(id); });
+
+  div.append(pTitle, pAuthor, pPages, pRead, readButton, deleteButton);
 
   return div;
+}
+
+function addBook(title, author, pages, read) {
+  // add a book to the library
+  let id = myLibrary.length + 1;
+  for (let i = 0; i < myLibrary.length; i++) {
+    if (myLibrary[i] === '') { id = i + 1; break; }
+  }
+
+  const book = new Book(title, author, pages, read, id);
+
+  myLibrary[id - 1] = book;
+
+  displayLibrary();
 }
 
 function deleteBook(id) {
@@ -79,6 +86,16 @@ function makeBookFromInputs() {
   addBook(title, author, pages, read);
 }
 
+function changeRead(id) {
+  for (let i = 0; i < myLibrary.length; i++) {
+    if (myLibrary[i].id === id) {
+      if (myLibrary[i].read === true) { myLibrary[i].read = false; } else if (myLibrary[i].read === false) { myLibrary[i].read = true; }
+    }
+  }
+
+  displayLibrary();
+}
+
 const Launch = document.querySelector('#Launch');
 Launch.addEventListener('click', () => { displayLibrary(); });
 
@@ -87,6 +104,6 @@ newBookButton.addEventListener('click', () => {
   makeBookFromInputs();
 });
 
-addBook('harry', 'JRK', 185, 'true');
-addBook('Hobit', 'Tolkien', 385, 'true');
-addBook('1984', 'George', 125, 'false');
+addBook('harry', 'JRK', 185, true);
+addBook('Hobit', 'Tolkien', 385, true);
+addBook('1984', 'George', 125, false);
