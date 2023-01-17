@@ -96,9 +96,6 @@ function changeRead(id) {
   displayLibrary();
 }
 
-const Launch = document.querySelector('#Launch');
-Launch.addEventListener('click', () => { displayLibrary(); });
-
 const newBookButton = document.querySelector('#Add');
 newBookButton.addEventListener('click', () => {
   makeBookFromInputs();
