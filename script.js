@@ -44,7 +44,12 @@ function getDivFromBook(book) {
   const pRead = document.createElement('p');
   pRead.innerText = `read: ${book.read}`;
 
-  div.append(pTitle, pAuthor, pPages, pRead);
+  const deleteButton = document.createElement('button');
+  deleteButton.className = 'deleteButton';
+  deleteButton.innerHTML = 'delete Book';
+  deleteButton.setAttribute('type', 'button');
+
+  div.append(pTitle, pAuthor, pPages, pRead, deleteButton);
 
   return div;
 }
