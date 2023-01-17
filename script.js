@@ -2,8 +2,9 @@
 /* eslint-disable no-restricted-syntax */
 const myLibrary = [];
 
-function Book(title, author, pages, read) {
+function Book(title, author, pages, read, id) {
   // constructor
+  this.id = id;
   this.title = title;
   this.author = author;
   this.pages = pages;
@@ -21,8 +22,8 @@ function displayLibrary() {
 
 function addBook(title, author, pages, read) {
   // add a book to the library
-
-  const book = new Book(title, author, pages, read);
+  const id = myLibrary.length + 1;
+  const book = new Book(title, author, pages, read, id);
   myLibrary.push(book);
   displayLibrary();
 }
