@@ -1,3 +1,4 @@
+/* eslint-disable guard-for-in */
 /* eslint-disable no-restricted-syntax */
 const myLibrary = [];
 
@@ -15,14 +16,32 @@ function addBook(title, author, pages, read) {
   myLibrary.push(book);
 }
 
+function getDivFromBook(book) {
+  const div = document.createElement('div');
+  div.style.cssText = 'color: black; background: grey;';
+
+  const pTitle = document.createElement('p');
+  pTitle.innerText = `Title: ${book.title}`;
+
+  const pAuthor = document.createElement('p');
+  pAuthor.innerText = `Author: ${book.author}`;
+
+  const pPages = document.createElement('p');
+  pPages.innerText = `Pages: ${book.pages}`;
+
+  const pRead = document.createElement('p');
+  pRead.innerText = `read: ${book.read}`;
+
+  div.append(pTitle, pAuthor, pPages, pRead);
+
+  return div;
+}
+
 function displayLibrary() {
   // loop through library and render the books
   document.getElementById('book-shelf').innerHTML = '';
   for (const book of myLibrary) {
-    const div = document.createElement('div');
-    for (const part in book) {
-      div.innerText += `${book[part]}`;
-    }
+    const div = getDivFromBook(book);
     document.getElementById('book-shelf').appendChild(div);
   }
 }
