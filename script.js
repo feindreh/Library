@@ -24,7 +24,9 @@ function addBook(title, author, pages, read) {
   // add a book to the library
   const id = myLibrary.length + 1;
   const book = new Book(title, author, pages, read, id);
+
   myLibrary.push(book);
+
   displayLibrary();
 }
 
@@ -49,10 +51,18 @@ function getDivFromBook(book) {
   deleteButton.className = 'deleteButton';
   deleteButton.innerHTML = 'delete Book';
   deleteButton.setAttribute('type', 'button');
+  const { id } = book;
+  deleteButton.addEventListener('click', () => { deleteBook(id); });
 
   div.append(pTitle, pAuthor, pPages, pRead, deleteButton);
 
   return div;
+}
+
+function deleteBook(id) {
+  console.log(id);
+  myLibrary.splice(id - 1, 1);
+  displayLibrary();
 }
 
 function makeBookFromInputs() {
