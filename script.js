@@ -15,6 +15,7 @@ function displayLibrary() {
   // loop through library and render the books
   document.getElementById('book-shelf').innerHTML = '';
   for (const book of myLibrary) {
+    if (book === '') { continue; }
     const div = getDivFromBook(book);
     document.getElementById('book-shelf').appendChild(div);
   }
@@ -61,7 +62,7 @@ function getDivFromBook(book) {
 
 function deleteBook(id) {
   console.log(id);
-  myLibrary.splice(id - 1, 1);
+  myLibrary.splice(id - 1, 1, '');
   displayLibrary();
 }
 
