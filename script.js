@@ -96,9 +96,18 @@ function changeRead(id) {
   displayLibrary();
 }
 
+function openPrompt() {
+  const inputs = document.querySelector('#input');
+  inputs.style.visibility = 'visible';
+  inputs.style.position = 'absolute';
+
+  const blackBox = document.querySelector('#blackbox');
+  blackBox.style.visibility = 'visible';
+}
+
 const newBookButton = document.querySelector('#Add');
 newBookButton.addEventListener('click', () => {
-  makeBookFromInputs();
+  openPrompt();
 });
 
 addBook('harry', 'JRK', 185, true);

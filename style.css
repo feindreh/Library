@@ -31,6 +31,10 @@ html,body>div{
     display: flex;
     flex-direction: column;
     width: 400px;
+    visibility: hidden;
+    z-index: 2;
+    background-color: white;
+    top:50%;
 }
 #input>div{
     display: flex;
@@ -46,4 +50,6 @@ html,body>div{
     min-height: 100vh;
     min-width: 100%;
     background-color: rgba(0, 0, 0, 0.548);
+    visibility: hidden;
+    z-index: 1;
 }
