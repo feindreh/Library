@@ -34,7 +34,14 @@ html,body>div{
     visibility: hidden;
     z-index: 2;
     background-color: white;
-    top:50%;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    height:auto;
+    top:45%;
 }
 #input>div{
     display: flex;
