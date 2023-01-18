@@ -131,6 +131,7 @@ makeBookButton.addEventListener('click', () => {
   closePrompt();
 });
 
-addBook('harry', 'JRK', 185, true);
-addBook('Hobit', 'Tolkien', 385, true);
-addBook('1984', 'George', 125, false);
+const cancelButton = document.querySelector('#cancelButton');
+cancelButton.addEventListener('click', () => {
+  closePrompt();
+});
