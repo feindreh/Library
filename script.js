@@ -104,9 +104,31 @@ function openPrompt() {
   blackBox.style.visibility = 'visible';
 }
 
+function closePrompt() {
+  const inputs = document.querySelector('#input');
+  inputs.style.visibility = 'hidden';
+
+  const blackBox = document.querySelector('#blackbox');
+  blackBox.style.visibility = 'hidden';
+}
+
+function resetInputs() {
+  document.getElementById('title').value = '';
+  document.getElementById('author').value = '';
+  document.getElementById('pages').value = '';
+  document.getElementById('read').checked = false;
+}
+
 const newBookButton = document.querySelector('#Add');
 newBookButton.addEventListener('click', () => {
   openPrompt();
+});
+
+const makeBookButton = document.querySelector('#makeButton');
+makeBookButton.addEventListener('click', () => {
+  makeBookFromInputs();
+  resetInputs();
+  closePrompt();
 });
 
 addBook('harry', 'JRK', 185, true);
