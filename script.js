@@ -125,23 +125,26 @@ function checkInputs() {
   const title = document.querySelector('#title');
   const author = document.querySelector('#author');
   const pages = document.querySelector('#pages');
-  checkValid(title);
-  checkValid(author);
-  checkValid(pages);
+  if (checkValid(title) === false) { return false; }
+  if (checkValid(author) === false) { return false; }
+  if (checkValid(pages) === false) { return false; }
+  return true;
 }
 
 function checkValid(node) {
-  checkEmpty(node);
+  if (checkEmpty(node) === false) { return false; }
+  return true;
 }
 
 function checkEmpty(node) {
   if (node.value === '') {
     node.className = 'error';
     node.previousElementSibling.innerText = 'Is required';
-  } else {
-    node.className = '';
-    node.previousElementSibling.innerText = '';
+    return false;
   }
+  node.className = '';
+  node.previousElementSibling.innerText = '';
+  return true;
 }
 
 const newBookButton = document.querySelector('#Add');
