@@ -42,10 +42,13 @@ html,body>div{
     text-align: center;
     height:auto;
     top:45%;
+    padding:10px;
 }
 #input>div{
     display: flex;
     justify-content: space-between;
+    margin-top: 3px;
+    margin-bottom: 3px;
 }
 
 .deleteButton{
@@ -59,4 +62,19 @@ html,body>div{
     background-color: rgba(0, 0, 0, 0.418);
     visibility: hidden;
     z-index: 1;
+}
+input{
+    border:1px black solid
+}
+.error{
+    border:1px red solid
+}
+
+#input>div{
+    position:relative
+}
+
+span{
+    position: absolute;
+    transform: translate(200%,-0%);
 }

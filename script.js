@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-use-before-define */
 const myLibrary = [];
 
 function Book(title, author, pages, read, id) {
@@ -111,9 +113,35 @@ function closePrompt() {
 
 function resetInputs() {
   document.getElementById('title').value = '';
+  document.getElementById('title').className = '';
   document.getElementById('author').value = '';
+  document.getElementById('author').className = '';
   document.getElementById('pages').value = '';
+  document.getElementById('pages').className = '';
   document.getElementById('read').checked = false;
+}
+
+function checkInputs() {
+  const title = document.querySelector('#title');
+  const author = document.querySelector('#author');
+  const pages = document.querySelector('#pages');
+  checkValid(title);
+  checkValid(author);
+  checkValid(pages);
+}
+
+function checkValid(node) {
+  checkEmpty(node);
+}
+
+function checkEmpty(node) {
+  if (node.value === '') {
+    node.className = 'error';
+    node.previousElementSibling.innerText = 'Is required';
+  } else {
+    node.className = '';
+    node.previousElementSibling.innerText = '';
+  }
 }
 
 const newBookButton = document.querySelector('#Add');
@@ -123,14 +151,18 @@ newBookButton.addEventListener('click', () => {
 
 const makeBookButton = document.querySelector('#makeButton');
 makeBookButton.addEventListener('click', () => {
-  makeBookFromInputs();
-  resetInputs();
-  closePrompt();
+  if (checkInputs()) {
+    makeBookFromInputs();
+    resetInputs();
+    closePrompt();
+  }
 });
 
 const cancelButton = document.querySelector('#cancelButton');
 cancelButton.addEventListener('click', () => {
   closePrompt();
-  const inputs = document.querySelectorAll('#input input');
-  inputs.forEach((input) => { input.value = ''; });
+  resetInputs();
 });
+
+const inputs = document.querySelectorAll('#input input');
+inputs.forEach((input) => input.addEventListener('input', (e) => { checkValid(e.target); }));

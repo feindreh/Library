@@ -11,10 +11,14 @@
 <body>
     <div id="blackbox"></div>
     <div id="input">
-        <div><label for="title">Titel:</label><input id="title" name="title" type="text"></div>
-        <div><label for="author">Author:</label><input id="author" name="author"type="text"></div>
-        <div><label for="pages">Pages:</label><input id="pages" name="pages" type="text"></div>
-        <div><label for="read">Read?</label><input id="read" name="read" type="checkbox"> </div>
+        <div>
+            <label for="title">Titel:</label>
+            <span></span>
+            <input id="title" name="title" type="text" required>
+        </div>
+        <div><label for="author">Author:</label><span></span><input id="author" name="author"type="text" required></div>
+        <div><label for="pages">Pages:</label><span></span><input id="pages" name="pages" type="text" required></div>
+        <div><label for="read">Read?</label><span></span><input id="read" name="read" type="checkbox"> </div>
         <button id="makeButton" type="button">Make new Book Entry</button>
         <button id="cancelButton" type="button">Cancel</button>
     </div>
