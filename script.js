@@ -131,4 +131,6 @@ makeBookButton.addEventListener('click', () => {
 const cancelButton = document.querySelector('#cancelButton');
 cancelButton.addEventListener('click', () => {
   closePrompt();
+  const inputs = document.querySelectorAll('#input input');
+  inputs.forEach((input) => { input.value = ''; });
 });
