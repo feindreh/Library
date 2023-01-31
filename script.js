@@ -1,6 +1,3 @@
-/* eslint-disable no-plusplus */
-/* eslint-disable guard-for-in */
-/* eslint-disable no-restricted-syntax */
 const myLibrary = [];
 
 function Book(title, author, pages, read, id) {
